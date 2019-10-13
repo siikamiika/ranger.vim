@@ -63,7 +63,7 @@ if has('nvim')
             "delete the temporary file
             call delete(s:choice_file_path)
             "store the last opened buffer number for later
-            let a:newFileBuff = bufnr('%')
+            let l:newFileBuff = bufnr('%')
             "if the old buffer was a directory
             if isdirectory(self.oldPath)
               "Then it should remove this buffer
@@ -72,7 +72,7 @@ if has('nvim')
               "but else it should select the old and then the last buffer to
               "set correctly the buffer list
               silent! execute 'buffer '. self.oldBuffer
-              silent! execute 'buffer '.a:newFileBuff
+              silent! execute 'buffer '.l:newFileBuff
             endif
           else
             "Select the old alternate buffer (before opening ranger)
