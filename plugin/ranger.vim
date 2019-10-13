@@ -75,24 +75,24 @@ if has('nvim')
               silent! execute 'buffer '.l:newFileBuff
             endif
           else
-            "Select the old alternate buffer (before opening ranger)
-            silent! execute 'buffer '. self.oldAltBuffer
-            "if the previous buffer is a directory, it means that ranger ran
-            "while opening vim
-            if isdirectory(self.oldPath)
-              "Then it should remove this previous buffer
-              silent! execute 'bdelete! '. self.oldBuffer
-              "and then opening a new empty one
-              enew
-            "but in any other case
-            else
-              "it should move back to the previous buffer
-              silent! execute 'buffer '. self.oldBuffer
-            endif
+          "  "Select the old alternate buffer (before opening ranger)
+          "  silent! execute 'buffer '. self.oldAltBuffer
+          "  "if the previous buffer is a directory, it means that ranger ran
+          "  "while opening vim
+          "  if isdirectory(self.oldPath)
+          "    "Then it should remove this previous buffer
+          "    silent! execute 'bdelete! '. self.oldBuffer
+          "    "and then opening a new empty one
+          "    enew
+          "  "but in any other case
+          "  else
+          "    "it should move back to the previous buffer
+          "    silent! execute 'buffer '. self.oldBuffer
+          "  endif
           endif
         endtry
         "finally it remove the ranger's buffer
-        execute 'bdelete! '.rangerBuff
+        silent! execute 'bdelete! '.rangerBuff
       "if ranger was close by 'bd'
       else
         silent! execute 'bdelete! '. self.oldBuffer
